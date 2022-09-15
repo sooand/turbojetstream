@@ -18,7 +18,7 @@ class InstallCommand extends Command
      * @var string
      */
     protected $signature = 'jetstream:install {stack : The development stack that should be installed (inertia,livewire)}
-                                              {--framework : If the "inertia" stack has been chosen, this value decides which frontend framework is used (vue, svelte) (default: vue)}
+                                              {--framework=vue : If the "inertia" stack has been chosen, this value decides which frontend framework is used (vue, svelte) (default: vue)}
                                               {--teams : Indicates if team support should be installed}
                                               {--api : Indicates if API support should be installed}
                                               {--verification : Indicates if email verification support should be installed}

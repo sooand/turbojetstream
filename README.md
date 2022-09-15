@@ -7,11 +7,11 @@ The original documentation for Jetstream can be found on the [Jetstream website]
 
 There has been added a new command, when choosing the inertia stack. 
 ```
---framework vue
+--framework=vue
 ```
 or 
 ```
---framework svelte
+--framework=svelte
 ```
 
 ## Current new features or changes
