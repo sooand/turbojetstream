@@ -414,10 +414,10 @@ EOF;
         }
 
         // Inertia Pages...
-        copy(__DIR__."/../../stubs/inertia/$framework/resources/js/Pages/Dashboard.vue", resource_path('js/Pages/Dashboard.vue'));
-        copy(__DIR__."/../../stubs/inertia/$framework/resources/js/Pages/PrivacyPolicy.vue", resource_path('js/Pages/PrivacyPolicy.vue'));
-        copy(__DIR__."/../../stubs/inertia/$framework/resources/js/Pages/TermsOfService.vue", resource_path('js/Pages/TermsOfService.vue'));
-        copy(__DIR__."/../../stubs/inertia/$framework/resources/js/Pages/Welcome.vue", resource_path('js/Pages/Welcome.vue'));
+        copy(__DIR__."/../../stubs/inertia/$framework/resources/js/Pages/Dashboard.$framework", resource_path("js/Pages/Dashboard.$framework"));
+        copy(__DIR__."/../../stubs/inertia/$framework/resources/js/Pages/PrivacyPolicy.$framework", resource_path("js/Pages/PrivacyPolicy.$framework"));
+        copy(__DIR__."/../../stubs/inertia/$framework/resources/js/Pages/TermsOfService.$framework", resource_path("js/Pages/TermsOfService.$framework"));
+        copy(__DIR__."/../../stubs/inertia/$framework/resources/js/Pages/Welcome.$framework", resource_path("js/Pages/Welcome.$framework"));
 
         (new Filesystem)->copyDirectory(__DIR__."/../../stubs/inertia/$framework/resources/js/Components", resource_path('js/Components'));
         (new Filesystem)->copyDirectory(__DIR__."/../../stubs/inertia/$framework/resources/js/Layouts", resource_path('js/Layouts'));
