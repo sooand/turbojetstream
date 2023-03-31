@@ -348,7 +348,7 @@ EOF;
 
         $this->updateNodePackages(function ($packages) use ($frameworkPackages) {
             return $frameworkPackages + $packages;
-        });
+        }, svelte: $this->option('framework') == 'svelte');
 
         // Sanctum...
         (new Process([$this->phpBinary(), 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path()))
@@ -359,7 +359,11 @@ EOF;
 
         // Tailwind Configuration...
         copy(__DIR__."/../../stubs/inertia/$framework/tailwind.config.js", base_path('tailwind.config.js'));
-        copy(__DIR__."/../../stubs/inertia/$framework/postcss.config.js", base_path('postcss.config.js'));
+        if ($framework == 'svelte') {
+            copy(__DIR__ . "/../../stubs/inertia/$framework/postcss.config.js", base_path('postcss.config.cjs'));
+        } else {
+            copy(__DIR__ . "/../../stubs/inertia/$framework/postcss.config.js", base_path('postcss.config.js'));
+        }
         copy(__DIR__."/../../stubs/inertia/$framework/vite.config.js", base_path('vite.config.js'));
 
         // Directories...
@@ -693,7 +697,7 @@ EOF;
      * @param  bool  $dev
      * @return void
      */
-    protected static function updateNodePackages(callable $callback, $dev = true)
+    protected static function updateNodePackages(callable $callback, $dev = true, $svelte = false)
     {
         if (! file_exists(base_path('package.json'))) {
             return;
@@ -707,6 +711,10 @@ EOF;
             array_key_exists($configurationKey, $packages) ? $packages[$configurationKey] : [],
             $configurationKey
         );
+
+        if ($svelte) {
+            $packages['type'] = 'module';
+        }
 
         ksort($packages[$configurationKey]);
 
