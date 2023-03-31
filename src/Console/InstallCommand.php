@@ -349,6 +349,10 @@ EOF;
             return $frameworkPackages + $packages;
         }, svelte: $this->option('framework') == 'svelte');
 
+        // Update vite config for module mode
+        if ($framework == 'svelte') {
+            file_put_contents(base_path('vite.config.js'), str_replace("plugins: [\n        laravel", "plugins: [\n        laravel.default", file_get_contents(base_path('vite.config.js'))));
+        }
         // Sanctum...
         (new Process([$this->phpBinary(), 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path()))
                 ->setTimeout(null)
