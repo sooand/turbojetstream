@@ -310,15 +310,15 @@ EOF;
         }
 
         // Install Inertia...
-        $this->requireComposerPackages('inertiajs/inertia-laravel:^0.6.3', 'tightenco/ziggy:^1.0');
+        $this->requireComposerPackages('inertiajs/inertia-laravel:^0.6.9', 'tightenco/ziggy:^1.5.0');
 
         $frameworkPackages = [];
 
         // Install NPM packages...
         if ($framework == 'vue') {
             $frameworkPackages = [
-                '@inertiajs/inertia' => '^0.11.0',
-                '@inertiajs/inertia-vue3' => '^0.6.0',
+                '@inertiajs/inertia' => '^0.11.1',
+                '@inertiajs/inertia-vue3' => '^1.0.2',
                 '@inertiajs/progress' => '^0.2.7',
                 '@tailwindcss/forms' => '^0.5.2',
                 '@tailwindcss/typography' => '^0.5.2',
@@ -332,16 +332,15 @@ EOF;
 
         if ($framework == 'svelte') {
             $frameworkPackages = [
-                '@inertiajs/inertia' => '^0.11.0',
+                '@inertiajs/inertia' => '^0.11.1',
                 '@inertiajs/inertia-svelte' => '^0.8.0',
                 '@inertiajs/progress' => '^0.2.7',
-                '@sveltejs/vite-plugin-svelte' => '^1.0.2',
+                '@sveltejs/vite-plugin-svelte' => '^2.0.4',
                 '@tailwindcss/forms' => '^0.5.2',
                 '@tailwindcss/typography' => '^0.5.2',
                 'autoprefixer' => '^10.4.7',
                 'postcss' => '^8.4.14',
                 'tailwindcss' => '^3.1.0',
-                'svelte' => '^3.49.0',
                 'ziggy-js' => '^1.4.6',
             ];
         }
