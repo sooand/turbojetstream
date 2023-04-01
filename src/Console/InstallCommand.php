@@ -349,10 +349,6 @@ EOF;
             return $frameworkPackages + $packages;
         }, svelte: $this->option('framework') == 'svelte');
 
-        // Update vite config for module mode
-        if ($framework == 'svelte') {
-            file_put_contents(base_path('vite.config.js'), str_replace("plugins: [\n        laravel", "plugins: [\n        laravel.default", file_get_contents(base_path('vite.config.js'))));
-        }
         // Sanctum...
         (new Process([$this->phpBinary(), 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path()))
                 ->setTimeout(null)
@@ -368,6 +364,14 @@ EOF;
             copy(__DIR__ . "/../../stubs/inertia/$framework/postcss.config.js", base_path('postcss.config.js'));
         }
         copy(__DIR__."/../../stubs/inertia/$framework/vite.config.js", base_path('vite.config.js'));
+
+        // Update vite config for module mode
+        if ($this->option('framework') == 'svelte') {
+            $file = base_path('vite.config.js');
+            $contents = file_get_contents($file);
+            $contents = str_replace("        laravel", "        laravel.default", $contents);
+            file_put_contents($file, $contents);
+        }
 
         // Directories...
         (new Filesystem)->ensureDirectoryExists(app_path('Actions/Fortify'));
