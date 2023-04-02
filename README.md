@@ -1,4 +1,4 @@
-## Introduction
+***## Introduction
 Jetstream is an amazing package for bootstrapping Laravel.
 This package is just a package for tweaking some features and adding extra features to it.
 
@@ -13,6 +13,8 @@ or
 ```
 --framework=svelte
 ```
+
+
 
 ## Current new features or changes
 There's no features yet, but there has been added support for a new frontend framework [Svelte](https://svelte.dev/) when using the inertia stack.
